@@ -5,9 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/")
 public class HomeController {
-    
+
     @Value("${application.version:unknown}")
     private String version;
 
@@ -16,4 +15,8 @@ public class HomeController {
         return "Version: " + version;
     }
 
+    @RequestMapping("/")
+    public String home() {
+        return "App is running!";
+    }
 }
