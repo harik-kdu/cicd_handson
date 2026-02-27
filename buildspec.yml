@@ -4,6 +4,14 @@ phases:
   install:
     runtime-versions:
       java: corretto21
+    commands:
+      - echo "Setting JAVA_HOME..."
+      - export JAVA_HOME=/usr/lib/jvm/java-21-amazon-corretto
+      - export PATH=$JAVA_HOME/bin:$PATH
+      - echo "Installing Maven..."
+      - yum install -y maven
+      - java -version
+      - mvn -version
 
   build:
     commands:
