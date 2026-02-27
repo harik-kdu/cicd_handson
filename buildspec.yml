@@ -7,9 +7,9 @@ phases:
 
   build:
     commands:
-      - echo "Building app..."
-      - ./gradlew build
+      - echo "Building app using Maven..."
+      - mvn clean package -DskipTests
 
 artifacts:
   files:
-    - build/libs/*.jar
+    - target/*.jar
