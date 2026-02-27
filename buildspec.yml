@@ -3,13 +3,20 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      java: corretto21
+      java: corretto17
 
   build:
     commands:
-      - echo "Building app using Maven..."
-      - mvn clean package -DskipTests
+      - echo "Building using Maven Wrapper..."
+      - chmod +x mvnw
+      - export JAVA_HOME=$JAVA_17_HOME
+      - ./mvnw clean package -DskipTests
+
+  post_build:
+    commands:
+      - echo "Moving JAR to root..."
+      - cp target/*.jar app.jar
 
 artifacts:
   files:
-    - target/*.jar
+    - app.jar
