@@ -7,7 +7,8 @@ phases:
 
   build:
     commands:
-      - echo "Building using Maven Wrapper..."
+      - export JAVA_HOME=$JAVA_17_HOME
+      - export PATH=$JAVA_HOME/bin:$PATH
       - chmod +x mvnw
       - ./mvnw clean package -DskipTests
 
